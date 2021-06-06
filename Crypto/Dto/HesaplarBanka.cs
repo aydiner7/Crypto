@@ -12,7 +12,6 @@ namespace Crypto.Dto
         public string banka { get; set; }
         public string iban { get; set; }
 
-
         public HesaplarBanka()
         { 
         }
