@@ -1,0 +1,68 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Crypto.Controls"
+             xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Class="Crypto.Controls.DenetimVarliklarim"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="794" Background="#212529">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Label Content="Varlıklarım" Foreground="#FFBBAFAF"  FontSize="20" HorizontalAlignment="Center" Margin="0,15"/>
+            <Label Width="600" Background="#FFBBAFAF" Height="1"/>
+        
+        <Wpf:PieChart Name="pieChart"  LegendLocation="Right" HorizontalAlignment="Center" Height="392" Margin="50,50,50,0" VerticalAlignment="Top" Width="688" Series="{Binding SeriesCollection}" FontSize="17">
+                <Wpf:PieChart.Effect>
+                    <DropShadowEffect/>
+                </Wpf:PieChart.Effect>
+                <Wpf:PieChart.ChartLegend>
+                <Wpf:DefaultLegend BulletSize="25" Foreground="AliceBlue" Margin="0,0,0,0"/>
+            </Wpf:PieChart.ChartLegend>
+        </Wpf:PieChart>
+
+            <Border Background="#6c6f72" Height="150" Margin="15,20,15,0" CornerRadius="10">
+                <Border.Effect>
+                    <DropShadowEffect Color="#FFCFCFCF" Direction="300"/>
+                </Border.Effect>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.ColumnSpan="3" Grid.Row="0" Background="#FF3A3F44" CornerRadius="10"/>
+                    <Border Grid.ColumnSpan="3" Grid.Row="2" Background="#FF3A3F44" Opacity="0.3"/>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Birim" Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="Adet" Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="TRY Karşılığı" Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE" FontWeight="Bold" VerticalAlignment="Center"/>
+
+                    <Label x:Name="VarlikBirimSDU" Grid.Row="1" Grid.Column="0" Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE"/>
+                    <Label x:Name="VarlikBirimSDUadet" Grid.Row="1" Grid.Column="1"  Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE"/>
+                    <Label x:Name="VarlikBirimSDUTry" Grid.Row="1" Grid.Column="2"  Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE"/>
+
+                    <Label x:Name="VarlikBirimAKU" Grid.Row="2" Grid.Column="0" Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE"/>
+                    <Label x:Name="VarlikBirimAKUadet" Grid.Row="2" Grid.Column="1"  Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE"/>
+                    <Label x:Name="VarlikBirimAKUTry" Grid.Row="2" Grid.Column="2" Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE"/>
+
+                    <Label x:Name="VarlikBirimMAKU" Grid.Row="3" Grid.Column="0" Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE"/>
+                    <Label x:Name="VarlikBirimMAKUadet" Grid.Row="3" Grid.Column="1"  Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE"/>
+                    <Label x:Name="VarlikBirimMAKUTry" Grid.Row="3" Grid.Column="2"  Margin="50,0,0,0" FontSize="16" Foreground="#FFC3BEBE"/>
+
+                </Grid>
+
+            </Border>
+            <Label x:Name="VarlikBirimLiraTRY" Visibility="Visible" Foreground="Transparent"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

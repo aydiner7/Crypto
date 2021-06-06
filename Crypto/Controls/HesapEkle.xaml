@@ -1,0 +1,90 @@
+﻿<Window x:Class="Crypto.Controls.HesapEkle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Crypto.Controls"
+        mc:Ignorable="d"
+        Title="HesapEkle" Height="350" Width="350" Background="#FF3D434B" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+
+        <StackPanel Margin="0,30,0,0">
+            <Label Content="Hesap Adı" HorizontalAlignment="Center" Foreground="#FFBBAFAF" FontSize="15" FontWeight="Bold"/>
+            <TextBox
+                    x:Name="hesapEkleHesapAdi"
+                    FontSize="14"
+                  Foreground="#FFBBAFAF" 
+                    BorderThickness="1" 
+                    Padding="3" 
+                FontWeight="DemiBold"
+                Margin="30,0,30,10"
+                    Background="#FF3D434B"
+                  materialDesign:HintAssist.Hint=""
+                  materialDesign:HintAssist.Foreground="Green"
+                  materialDesign:TextFieldAssist.UnderlineBrush="#FFBBAFAF" />
+
+
+            <Label Content="IBAN" HorizontalAlignment="Center" Foreground="#FFBBAFAF" FontSize="15" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="TR" VerticalAlignment="Center" Foreground="#FFBBAFAF" FontSize="15" Margin="6,0,0,0"/>
+                <TextBox
+                    TextChanged="hesapEkleIban_TextChanged"
+                    Width="290"
+                    FontWeight="DemiBold"                    
+                    x:Name="hesapEkleIban"
+                    FontSize="14"
+                  Foreground="#FFBBAFAF" 
+                    BorderThickness="1" 
+                    Padding="3" 
+                Margin="0,0,30,10"                
+                    Background="#FF3D434B"
+                  materialDesign:HintAssist.Hint=""
+                  materialDesign:HintAssist.Foreground="Green"
+                  materialDesign:TextFieldAssist.UnderlineBrush="#FFBBAFAF" />
+            </StackPanel>
+            <Label Content="Banka Adı" HorizontalAlignment="Center" Foreground="#FFBBAFAF" FontSize="15" FontWeight="Bold"/>
+            <TextBox
+                    x:Name="hesapEkleBankaAdi"
+                FontWeight="DemiBold"
+                    FontSize="14"
+                  Foreground="#FFBBAFAF" 
+                    BorderThickness="1" 
+                    Padding="3" 
+                Margin="30,0,30,0"
+                    Background="#FF3D434B"
+                  materialDesign:HintAssist.Hint=""
+                  materialDesign:HintAssist.Foreground="Green"
+                  materialDesign:TextFieldAssist.UnderlineBrush="#FFBBAFAF" />
+
+
+
+
+
+            <TextBlock/>
+            <TextBlock/>
+        </StackPanel>
+
+        <DockPanel VerticalAlignment="Bottom" Margin="0,0,0,15">
+            <Button Content="GERİ" Width="100" Margin="30,0,0,0" Click="Button_Click" BorderBrush="#FF3D434B">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF2D323A" Offset="1"/>
+                        <GradientStop Color="#FF3D434B"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btn_ekle" Content="EKLE" Width="100" BorderBrush="#FF3D434B" Margin="0,0,-60,0"  Click="btn_ekle_Click">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF2D323A" Offset="1"/>
+                        <GradientStop Color="#FF3D434B"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
+
+        </DockPanel>
+
+
+    </Grid>
+</Window>

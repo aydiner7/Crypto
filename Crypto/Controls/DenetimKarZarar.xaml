@@ -1,0 +1,93 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Crypto.Controls"
+             xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Crypto.Controls.DenetimKarZarar"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="794" Background="#212529">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Label Content="Kar / Zarar" Foreground="#FFBBAFAF"  FontSize="20" HorizontalAlignment="Center" Margin="0,15"/>
+            <Label Width="600" Background="#FFBBAFAF" Height="1"/>
+
+            <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,100,0,0">
+                    <Label Content="SDU Coin" Foreground="#FFC3BEBE" Margin="0,0,15,0" FontSize="16" FontWeight="Bold"  VerticalContentAlignment="Center"/>
+                <StackPanel>
+                        <!--<ProgressBar x:Name="sdu_zararBar" Value="65" Width="500"  Height="15" Background="#FFBBAFAF" Margin="0,0,0,5" Foreground="#f84c48"/>  -->
+                        <ProgressBar x:Name="sdu_karBar" Value="65" Width="500"  Height="15" VerticalAlignment="Center" Margin="0,6,0,0" Background="#FFBBAFAF" Foreground="#febc2c"/>
+                </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="250" Margin="0,15,0,0">
+                <DockPanel Margin="0,0,50,0">
+                    <Label Content="Kar :"  Foreground="#FFC3BEBE" FontSize="14"/>
+                        <Label x:Name="SduKAR_txt" Content="5" Foreground="#febc2c" FontSize="14"/>
+                        <Label Content="TL" Foreground="#febc2c" FontSize="14"/>
+                </DockPanel>
+                <DockPanel>
+                        <Label Content="Zarar :" Foreground="#FFC3BEBE" FontSize="14"/>
+                        <Label x:Name="SduZARAR_txt" Content="-" Foreground="#f84c48" FontSize="14"/>
+                        <Label Content="TL" Foreground="#f84c48" FontSize="14"/>
+                </DockPanel>
+                </StackPanel>
+                <StackPanel Width="150" Height="1" Background="#FFBBAFAF" Margin="0,50,0,0"/>
+            </StackPanel>
+
+
+
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
+                    <Label Content="AKU Coin" Foreground="#FFC3BEBE"  Margin="0,0,15,0"  FontSize="16" FontWeight="Bold"  VerticalContentAlignment="Center"/>
+                    <StackPanel>
+                     <!--   <ProgressBar x:Name="aku_zararBar" Value="45" Width="500"  Height="15" Background="Gray" Margin="0,0,0,5" materialDesign:ColorZoneAssist.Background="AliceBlue" Foreground="#f84c48"/> -->
+                        <ProgressBar x:Name="aku_karBar" Value="45" Width="500"  Height="15" Background="#FFBBAFAF" Margin="0,6" materialDesign:ColorZoneAssist.Background="AliceBlue" Foreground="#febc2c"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="250" Margin="0,15,0,0">
+                    <DockPanel Margin="0,0,50,0">
+                        <Label Content="Kar :" Foreground="#FFC3BEBE" FontSize="14"/>
+                        <Label x:Name="akuKar_txt" Content="-" Foreground="#febc2c" FontSize="14"/>
+                        <Label Content="TL" Foreground="#febc2c" FontSize="14"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <Label Content="Zarar :" Foreground="#FFC3BEBE" FontSize="14"/>
+                        <Label x:Name="akuZARAR_txt" Content="-" Foreground="#f84c48" FontSize="14"/>
+                        <Label Content="TL" Foreground="#f84c48" FontSize="14"/>
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel Width="150" Height="1" Background="#FFBBAFAF" Margin="0,50,0,0"/>
+            </StackPanel>
+
+
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
+                    <Label Content="MAKU Coin" Foreground="#FFC3BEBE"  Margin="0,0,10,0" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                    <StackPanel>
+                     <!--   <ProgressBar x:Name="maku_zararBar" Value="35" Width="500"  Height="15" Background="Gray" Margin="0,0,0,5" materialDesign:ColorZoneAssist.Background="AliceBlue" Foreground="#f84c48"/>  -->
+                        <ProgressBar x:Name="maku_karBar" Value="35" Width="500"  Height="15" Margin="0,6" Background="#FFBBAFAF" materialDesign:ColorZoneAssist.Background="AliceBlue" Foreground="#febc2c"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="250" Margin="0,15,0,0">
+                    <DockPanel Margin="0,0,50,0">
+                        <Label Content="Kar :" Foreground="#FFC3BEBE" FontSize="14"/>
+                        <Label x:Name="makuKAR_txt" Content="-" Foreground="#febc2c" FontSize="14"/>
+                        <Label Content="TL" Foreground="#febc2c" FontSize="14"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <Label Content="Zarar :" Foreground="#FFC3BEBE" FontSize="14"/>
+                        <Label x:Name="makuZARAR_txt" Content="-" Foreground="#f84c48" FontSize="14"/>
+                        <Label Content="TL" Foreground="#f84c48" FontSize="14"/>
+                    </DockPanel>
+                </StackPanel>
+            </StackPanel>
+
+
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

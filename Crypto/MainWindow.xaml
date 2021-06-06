@@ -1,0 +1,535 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+        xmlns:local="clr-namespace:Crypto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        x:Class="Crypto.MainWindow"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+            Title="MainWindow" Height="756" Width="1344" Background="#3d434b"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded" Icon="Images/logokarar.1.png">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" x:Name="MenuGenislik"/>
+            <ColumnDefinition Width="794" x:Name="OrtaPanelGenislik"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sol Panel -->
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--Logo Desing-->
+            <Grid Grid.Row="0" x:Name="board_kaydir">
+
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Background" Value="#3d434b"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#212529"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="DockPanel_MouseDown">
+                    <!--Logo sembol-->
+                    <Image Cursor="Hand" x:Name="ButonAcilirMenu" MouseDown="ButonAcilirMenu_MouseDown">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Source" Value="Images/logokarar.1.png"/>
+                                <Setter Property="Height" Value="auto"/>
+                                <Setter Property="Width" Value="60"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseDirectlyOver" Value="True">
+                                        <Setter Property="Width" Value="70"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <!--Logo Yazı-->
+                    <Image Cursor="Hand" x:Name="LogoYazi" MouseDown="LogoYazi_MouseDown">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Source" Value="Images/logokarar2.1.png"/>
+                                <Setter Property="Height" Value="60"/>
+                                <Setter Property="Width" Value="100"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseDirectlyOver" Value="True">
+                                        <Setter Property="Width" Value="110"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+
+                </DockPanel>
+
+            </Grid>
+
+
+            <Border Background="#3d434b" Grid.Column="0" Grid.Row="1" CornerRadius="30,30,0,0" BorderBrush="#5c6d75" BorderThickness="0,2,0,0">
+                <Border.Effect>
+                    <DropShadowEffect Color="White" Opacity="0.5" Direction="100" BlurRadius="10" ShadowDepth="4"/>
+                </Border.Effect>
+                <!--Menü Butonlarım-->
+                <StackPanel>
+                    <Button Height="50" Style="{DynamicResource menu_butonlar}" Margin="0,35,0,1" x:Name="menuButon_piyasa" Click="menuButon_piyasa_Click">
+                        <DockPanel Width="160" Margin="30,0,0,0">
+                            <Image Source="Images/finance2.png" Width="32"/>
+                            <Label Content="Piyasa" Foreground="White" FontSize="14" x:Name="MenuYazi1" >
+                            </Label>
+                        </DockPanel>
+                    </Button>
+                    <Button Height="50" Style="{DynamicResource menu_butonlar}" Margin="0,0,0,1" x:Name="menuButon_varliklar" Click="menuButon_varliklar_Click">
+                        <DockPanel Width="160" Margin="30,0,0,0">
+                            <Image Source="Images/wallet.png" Width="32"/>
+                            <Label Content="Varlıklarım" Foreground="White" FontSize="14" x:Name="MenuYazi2"/>
+                        </DockPanel>
+                    </Button>
+                    <Button Height="50" Style="{DynamicResource menu_butonlar}" Margin="0,0,0,1" x:Name="menuButon_hesapDetay" Click="menuButon_hesapDetay_Click">
+                        <DockPanel Width="160" Margin="30,0,0,0">
+                            <Image Source="Images/account.png" Width="32"/>
+                            <Label Content="Hesap Detayları" Foreground="White" FontSize="14" x:Name="MenuYazi3"/>
+                        </DockPanel>
+                    </Button>
+                    <Button Height="50" Style="{DynamicResource menu_butonlar}" Margin="0,0,0,1" x:Name="menuButon_karZarar" Click="menuButon_karZarar_Click">
+                        <DockPanel Width="160" Margin="30,0,0,0">
+                            <Image Source="Images/kar-zarar.png" Width="32"/>
+                            <Label Content="Kar / Zarar" Foreground="White" FontSize="14" x:Name="MenuYazi4"/>
+                        </DockPanel>
+                    </Button>
+                    <Button Height="50" Style="{DynamicResource menu_butonlar}" Margin="0,0,0,1" x:Name="menuButon_bankaHesap" Click="menuButon_bankaHesap_Click">
+                        <DockPanel Width="160" Margin="30,0,0,0">
+                            <Image Source="Images/bank-account.png" Width="32"/>
+                            <Label Content="Banka Hesaplarım" Foreground="White" FontSize="14"  x:Name="MenuYazi5"/>
+                        </DockPanel>
+                    </Button>
+                    <Button Height="50" Style="{DynamicResource menu_butonlar}" Margin="0,0,0,0" x:Name="menuButon_sifreDegistir" Click="menuButon_sifreDegistir_Click">
+                        <DockPanel Width="160" Margin="30,0,0,0">
+                            <Image Source="Images/key.png" Width="32"/>
+                            <Label Content="Şifre Değiştir" Foreground="White" FontSize="14" x:Name="MenuYazi6"/>
+                        </DockPanel>
+                    </Button>
+
+
+                    <Canvas >
+                        <Border Canvas.Left="102" Canvas.Top="270" CornerRadius="10">
+                            <Label Content="10.0.0.1" Width="70" FontWeight="Bold" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Cursor="Hand" x:Name="MenuYazi7"/>
+
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="#4C1D273B"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#212529"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+
+                        </Border>
+                    </Canvas>
+
+                </StackPanel>
+            </Border>
+            <!--Deneme-->
+            <!--
+            <Grid Grid.Column="0" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="7" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    
+                </StackPanel>
+                <Grid x:Name="piyasa" Grid.Row="1" MouseDown="piyasa_MouseDown"  MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave">
+                    <StackPanel x:Name="piyasa_cizgi" VerticalAlignment="Top" HorizontalAlignment="Left" Width="3" Height="60"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="Images/finance2.png" Width="32" Height="32" Margin="40,0,0,0" />
+                        <TextBlock Grid.Row="1" Text="Piyasa" Foreground="White" FontSize="14" FontWeight="Bold" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="cüzdan" Grid.Row="2" MouseDown="cüzdan_MouseDown" MouseEnter="cüzdan_MouseEnter" MouseLeave="cüzdan_MouseLeave">
+                    <StackPanel x:Name="cüzdan_cizgi" VerticalAlignment="Top" HorizontalAlignment="Left" Width="3" Height="60"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="Images/wallet.png" Width="32" Height="32" Margin="40,0,0,0" />
+                        <TextBlock Grid.Row="2" Text="Varlıklarım" Foreground="White" FontSize="14" FontWeight="Bold"  Margin="15,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="hesap" Grid.Row="3" MouseDown="hesap_MouseDown" MouseEnter="hesap_MouseEnter" MouseLeave="hesap_MouseLeave">
+                    <StackPanel x:Name="hesap_cizgi" VerticalAlignment="Top" HorizontalAlignment="Left" Width="3" Height="60"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="Images/account.png" Width="32" Height="32" Margin="40,0,0,0" />
+                        <TextBlock Grid.Row="3" Text="Hesap Detayları" Foreground="White" FontSize="14" FontWeight="Bold"  Margin="15,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="kar" Grid.Row="4" MouseDown="kar_MouseDown"  MouseEnter="kar_MouseEnter" MouseLeave="kar_MouseLeave">
+                    <StackPanel x:Name="kar_cizgi" VerticalAlignment="Top" HorizontalAlignment="Left" Width="3" Height="60"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="Images/kar-zarar.png" Width="32" Height="32" Margin="40,0,0,0" />
+                        <TextBlock Grid.Row="4" Text="Kar / Zarar" Foreground="White" FontSize="14" FontWeight="Bold"  Margin="15,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="banka" Grid.Row="5" MouseDown="banka_MouseDown"  MouseEnter="banka_MouseEnter" MouseLeave="banka_MouseLeave">
+                    <StackPanel x:Name="banka_cizgi" VerticalAlignment="Top" HorizontalAlignment="Left" Width="3" Height="60"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="Images/bank-account.png" Width="32" Height="32" Margin="40,0,0,0" />
+                        <TextBlock Grid.Row="5" Text="Banka Hesaplarım" Foreground="White" FontSize="14" FontWeight="Bold"  Margin="15,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="key" Grid.Row="6"  MouseEnter="key_MouseEnter" MouseLeave="key_MouseLeave" MouseDown="key_MouseDown">
+                    <StackPanel x:Name="key_cizgi"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="3" Height="60"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="Images/key.png" Width="32" Height="32" Margin="40,0,0,0" />
+                        <TextBlock Grid.Row="6" Text="Şifre Değiştir" Foreground="White" FontSize="14" FontWeight="Bold"  Margin="15,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Grid> 
+            -->
+        </Grid>
+        <!-- Sağ Panel -->
+        <DockPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Width="70" VerticalAlignment="Top" Height="25">
+            <Button Content="_"   Style="{DynamicResource mini_butonlar}" FontFamily="Arial Black" Margin="0,0,1,0" Name="butonSimgeDurumu" Click="butonSimgeDurumu_Click">
+                <Button.Effect>
+                    <BlurEffect Radius="3"/>
+                </Button.Effect>
+            </Button>
+            <Button Content="X"  x:Name="buton_kapat" Click="buton_kapat_Click" Style="{DynamicResource mini_butonlar}" FontFamily="Arial Black" FontSize="11">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="3" Color="#FFB0B0B0" Direction="200" ShadowDepth="3"/>
+                </Button.Effect>
+            </Button>
+        </DockPanel>
+
+        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="1" Background="#3d434b">
+
+        </Border>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- Sağ Üst Panel -->
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="15,0,15,5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal" Background="Gray" Margin="1,10" Height="100" Width="2" Opacity="0.4"/>
+                        <TextBlock x:Name="limit" Grid.Column="0" Text="Limit" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E2E6" MouseDown="limit_MouseDown"/>
+                        <TextBlock x:Name="stop" Grid.Column="1" Text="Stop" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E2E6" MouseDown="stop_MouseDown"/>
+                        <StackPanel x:Name="limit_cizgi" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="4" Background="DeepSkyBlue" Width="133"/>
+                        <StackPanel x:Name="stop_cizgi" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="4" Background="Gray" Width="133"/>
+
+                    </Grid>
+                </Grid>
+
+
+                <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="2" CornerRadius="5" Background="#3d434b" Margin="15,6">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal" Background="Gray" Margin="1,10" Height="20" Width="2" Opacity="0.4"/>
+                        <TextBlock MouseDown="al_MouseDown" x:Name="al" Grid.Column="0" Text="AL" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13" FontWeight="DemiBold" Foreground="#febc2c"/>
+                        <TextBlock MouseDown="sat_MouseDown" MouseEnter="sat_MouseEnter" MouseLeave="sat_MouseLeave" x:Name="sat" Grid.Column="1" Text="SAT" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13" FontWeight="DemiBold" Foreground="White"/>
+                    </Grid>
+                </Border>
+
+                <Grid x:Name="tetiklenen" Grid.Row="2" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <!--<TextBlock Grid.Column="0" Text="Tetiklenen" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E2E6"/>-->
+                    <TextBlock Grid.Column="2" Text="TRY" VerticalAlignment="Bottom" Margin="0,0,0,13" HorizontalAlignment="Center" Foreground="#E0E2E6"/>
+
+                    <TextBox 
+                        Grid.Column="1"
+                        x:Name="tetik_textbox"
+                        TextAlignment="Center"
+                        materialDesign:HintAssist.Foreground="#FFA1A1A1"
+                        materialDesign:TextFieldAssist.UnderlineBrush="#FF212529"
+                        Width="160"
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap"
+                          materialDesign:HintAssist.Hint="Tetiklenen Fiyat"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                          VerticalAlignment="Center" Foreground="White"
+                        BorderBrush="White" BorderThickness="0,0,0,1" CaretBrush="#FF0078D7"/>
+
+                    <!-- <TextBox HorizontalAlignment="Center"  Grid.Column="1" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Center" TextAlignment="Center" Width="160" Padding="2" BorderBrush="White" BorderThickness="0,0,0,1" Foreground="White"/>
+               -->
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <!-- <TextBlock Grid.Column="0" Text="Fiyat" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E2E6"/>-->
+                    <TextBlock Grid.Column="2" Text="TRY" VerticalAlignment="Bottom" Margin="0,0,0,13" HorizontalAlignment="Center" Foreground="#E0E2E6"/>
+                    <TextBox 
+                        Grid.Column="1"
+                        x:Name="fiyat_textbox"
+                        Text="0.0"
+                        TextAlignment="Center"
+                        Width="160"
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap"
+                        materialDesign:HintAssist.Foreground="#FFA1A1A1"
+                        materialDesign:TextFieldAssist.UnderlineBrush="#FF212529"
+                        
+                          materialDesign:HintAssist.Hint="Fiyat"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                          VerticalAlignment="Center" Foreground="White"
+                        BorderBrush="White" BorderThickness="0,0,0,1" CaretBrush="Black" SelectionBrush="Black"/>
+
+                    <!--<TextBox x:Name="fiyat_textbox" HorizontalAlignment="Center"  Grid.Column="1" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Center" Foreground="White"  TextAlignment="Center" Width="160" Padding="2" BorderBrush="White" BorderThickness="0,0,0,1" CaretBrush="#FF0078D7"/>
+                -->
+                </Grid>
+
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <!-- <TextBlock  Grid.Column="0" Text="Miktar" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E2E6"/>-->
+                    <TextBlock x:Name="miktar_coinName" Grid.Column="2" Text="-" VerticalAlignment="Bottom" Margin="0,0,0,13" HorizontalAlignment="Center" Foreground="#E0E2E6"/>
+
+                    <TextBox 
+                        Grid.Column="1"
+                        x:Name="miktar_textbox"
+                        TextChanged="miktar_textbox_TextChanged"
+                        Text="0.0"
+                        TextAlignment="Center"
+                        materialDesign:HintAssist.Foreground="#FFA1A1A1"
+                        materialDesign:TextFieldAssist.UnderlineBrush="#FF212529"
+                        
+                        Width="160"
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap"
+                          materialDesign:HintAssist.Hint="Miktar"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                          VerticalAlignment="Center" Foreground="White"
+                        BorderBrush="White" BorderThickness="0,0,0,1" CaretBrush="#FFADC1D1" Background="{x:Null}"/>
+                    <!--<TextBox x:Name="miktar_textbox" HorizontalAlignment="Center" Grid.Column="1" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Center" Foreground="White" TextAlignment="Center" Width="160" Padding="2" TextChanged="miktar_textbox_TextChanged" BorderBrush="White" BorderThickness="0,0,0,1" CaretBrush="#FF0078D7"/>
+                -->
+                </Grid>
+
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <!--<TextBlock Grid.Column="0" Text="Toplam" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E2E6"/>-->
+                    <TextBlock Grid.Column="2" Text="TRY" VerticalAlignment="Bottom" Margin="0,0,0,13" HorizontalAlignment="Center" Foreground="#E0E2E6"/>
+
+                    <TextBox 
+                        Grid.Column="1"
+                        x:Name="toplam_textbox"
+                        materialDesign:HintAssist.Foreground="#FFA1A1A1"
+                        materialDesign:TextFieldAssist.UnderlineBrush="#FF212529"
+                        
+                        Text="0.0"
+                        TextAlignment="Center"
+                        Width="160"
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap"
+                        TextChanged="toplam_textbox_TextChanged"
+                          materialDesign:HintAssist.Hint="Toplam"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                          VerticalAlignment="Center" Foreground="White"
+                        BorderBrush="White" BorderThickness="0,0,0,1" CaretBrush="#FF0078D7"/>
+                    <!--<TextBox x:Name="toplam_textbox" HorizontalAlignment="Center" Grid.Column="1" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Center" Foreground="White"  TextAlignment="Center" Width="160" Padding="2" TextChanged="toplam_textbox_TextChanged" BorderBrush="White" BorderThickness="0,0,0,1" CaretBrush="#FF0078D7"/>
+            -->
+                </Grid>
+
+                <Grid Width="150"  Grid.Row="6">
+                    <Button
+                      x:Name="islemYapButon"
+                      Style="{StaticResource MaterialDesignRaisedButton}"
+                      materialDesign:ButtonAssist.CornerRadius="4"
+                      Content="İşlem Yap" Background="#FFA1A1A1" BorderBrush="#FFBBAFAF" Foreground="#212529" 
+                      Click="islemYapButon_Click"  />
+                </Grid>
+
+                <!-- 
+                <Button x:Name="islemButon" Grid.Row="6" Content="İşlem Yap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0" Padding="4" Width="150" Background="#586d78" Foreground="White" FontWeight="DemiBold" FontSize="14"/>
+-->
+            </Grid>
+
+
+            <!-- Sağ Alt Panel -->
+
+            <Border Background="#3d434b" Grid.Row="1" CornerRadius="20,20,0,0" BorderBrush="#5c6d75" BorderThickness="0.2,2,0,0">
+                <Grid >
+
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" Background="CornflowerBlue" Opacity="0.1" Margin="15,0"/>
+
+                    <TextBlock Text="Piyasa" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
+                    <ProgressBar Grid.Row="0" Grid.ColumnSpan="3"
+                                 VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                 Margin="0,0,0,10"
+                                 IsIndeterminate="True"
+                          x:Name="DeterminateCircularProgress"
+                          Style="{StaticResource MaterialDesignCircularProgressBar}" Foreground="#FFFBFBFB" />
+
+                    <TextBlock Text="Coin" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="#0497cb"/>
+                    <TextBlock Text="Fiyat" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="#0497cb" />
+                    <TextBlock Text="Değişim %" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="#0497cb"/>
+
+                    <TextBlock x:Name="sdu" Text="SDU" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="MintCream" MouseDown="sdu_MouseDown"/>
+                    <TextBlock x:Name="sdu_fiyat" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="MintCream"/>
+                    <TextBlock x:Name="sdu_degisim"  Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <StackPanel Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="1" Margin="30,0" Background="Gray" Width="240" Opacity="0.3"/>
+
+                    <TextBlock x:Name="maku" Text="MAKU" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="MintCream" MouseDown="maku_MouseDown"/>
+                    <TextBlock x:Name="maku_fiyat" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="MintCream"/>
+                    <TextBlock x:Name="maku_degisim"  Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <StackPanel Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="1" Margin="30,0" Background="Gray" Width="240" Opacity="0.3"/>
+
+                    <TextBlock x:Name="otdu" Text="AKU" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="MintCream" MouseDown="otdu_MouseDown"/>
+                    <TextBlock x:Name="aku_fiyat"  Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="MintCream"/>
+                    <TextBlock x:Name="aku_degisim"  Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+                    <StackPanel Grid.Row="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="1" Margin="30,0" Background="Gray" Width="240" Opacity="0.3"/>
+
+
+
+                </Grid>
+
+
+            </Border>
+
+        </Grid>
+
+        <!-- Orta Panel -->
+        <Grid Background="#3d434b" Grid.Column="1" Grid.Row="0">
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+
+            </Grid.ColumnDefinitions>
+            <StackPanel Background="#5c6d75" Width="794" Height="0.3" VerticalAlignment="Bottom" Grid.ColumnSpan="3"/>
+
+            <Grid Grid.Column="1" Background="#5c6d75">
+                <Grid.Effect>
+                    <DropShadowEffect Color="White" Opacity="0.4" Direction="-200" BlurRadius="10" ShadowDepth="3"/>
+                </Grid.Effect>
+                <DockPanel  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0" Width="300" >
+                    <Label Content="Kullanılabilir Bakiye :" FontSize="16" FontWeight="Bold" Foreground="White" Opacity="0.5"/>
+                    <Label x:Name="Kullanilabilir_Bakiye" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15,0,5,0"  FontSize="16" FontWeight="Bold" Foreground="AliceBlue"/>
+                    <Label Content="TRY" FontSize="16" FontWeight="Bold" Foreground="AliceBlue"/>
+                </DockPanel>
+            </Grid>
+
+
+            <Grid Grid.Column="0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label x:Name="KullaniciAdi" Content="HASAN" FontSize="17" FontWeight="ExtraBold" Foreground="#FF8698AA"/>
+                    <Label x:Name="KullaniciSoyadi" Content="AYDINER" FontSize="17" FontWeight="ExtraBold" Foreground="#FF8698AA"/>
+                </StackPanel>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Background" Value="#3d434b"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#212529"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+
+
+        </Grid>
+
+
+        <Grid Background="#212529" Grid.Column="1" Grid.Row="1">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FF858585" Direction="1500" BlurRadius="10"/>
+            </Grid.Effect>
+
+            <Grid x:Name="OrtaPanelIcerik">
+
+            </Grid>
+
+        </Grid>
+
+
+
+    </Grid>
+
+</Window>
