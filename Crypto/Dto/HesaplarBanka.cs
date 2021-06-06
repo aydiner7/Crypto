@@ -14,8 +14,7 @@ namespace Crypto.Dto
 
 
         public HesaplarBanka()
-        {
-
+        { 
         }
     }
 
